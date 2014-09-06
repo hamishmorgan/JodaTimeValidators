@@ -16,6 +16,12 @@
         </validated-by>
     </constraint-definition>
 
+    <constraint-definition annotation="javax.validation.constraints.Past">
+        <validated-by include-existing-validators="true">
+            <value>com.github.hamishmorgan.jodatimevalidators.PastValidatorForReadableInterval</value>
+        </validated-by>
+    </constraint-definition>
+
     <constraint-definition annotation="javax.validation.constraints.Future">
         <validated-by include-existing-validators="true">
             <value>com.github.hamishmorgan.jodatimevalidators.FutureValidatorForReadableInstant</value>

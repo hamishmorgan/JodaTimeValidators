@@ -17,7 +17,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Null instants are considered valid. The {@code DateMidnight} value for today is consider in the past; hence invalid.
  */
 @SuppressWarnings("deprecation")
-public class FutureValidatorForReadableInstant extends AbstractCurrentTimeRelativeValidatorForReadableInstant<Future> {
+public class FutureValidatorForReadableInstant extends AbstractCurrentTimeRelativeValidator<Future, ReadableInstant> {
 
     @Override
     public boolean isValid(@Nullable ReadableInstant value, @Nonnull ConstraintValidatorContext context) {

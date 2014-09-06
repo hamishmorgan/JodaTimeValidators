@@ -17,7 +17,7 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class PastValidatorForReadablePeriodTest {
+public class PastValidatorForReadablePartialTest {
 
     @Mock
     private Supplier<DateTime> currentDateTimeSupplier;

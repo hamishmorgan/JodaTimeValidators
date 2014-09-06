@@ -14,7 +14,9 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * implements: {@link org.joda.time.DateTime}, {@link org.joda.time.DateMidnight}, and
  * {@link org.joda.time.MutableDateTime}.
  * <p/>
- * Null instants are considered valid. The {@code DateMidnight} value for today is consider in the past; hence svalid.
+ * Null instants are considered valid.
+ * <p/>
+ * The {@code DateMidnight} value for today is consider in the past; hence valid.
  */
 @SuppressWarnings("deprecation")
 public class PastValidatorForReadableInstant extends AbstractCurrentTimeRelativeValidator<Past, ReadableInstant> {

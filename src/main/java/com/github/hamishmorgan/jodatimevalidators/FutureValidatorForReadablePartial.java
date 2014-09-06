@@ -6,7 +6,7 @@ import org.joda.time.ReadablePartial;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 import javax.validation.ConstraintValidatorContext;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.Future;
 
 import static com.google.common.base.Preconditions.checkNotNull;
 
@@ -21,7 +21,7 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * Missing temporal fields are populated from the current date and time.
  */
 @SuppressWarnings("deprecation")
-public class FutureValidatorForReadablePartial extends AbstractCurrentTimeRelativeValidator<Past, ReadablePartial> {
+public class FutureValidatorForReadablePartial extends AbstractCurrentTimeRelativeValidator<Future, ReadablePartial> {
 
     @Override
     public boolean isValid(@Nullable ReadablePartial value, @Nonnull ConstraintValidatorContext context) {

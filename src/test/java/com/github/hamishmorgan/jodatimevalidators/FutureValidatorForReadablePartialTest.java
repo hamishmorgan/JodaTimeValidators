@@ -10,7 +10,7 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.validation.ConstraintValidatorContext;
-import javax.validation.constraints.Past;
+import javax.validation.constraints.Future;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.verifyZeroInteractions;
@@ -26,7 +26,7 @@ public class FutureValidatorForReadablePartialTest {
     private FutureValidatorForReadablePartial validator;
 
     @Mock
-    private Past constraintAnnotation;
+    private Future constraintAnnotation;
 
     @Mock
     private ConstraintValidatorContext constraintValidatorContext;

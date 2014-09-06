@@ -26,9 +26,9 @@ public @interface Before {
 
     Class<? extends Payload>[] payload() default {};
 
-    int NO_YEAR = Integer.MIN_VALUE;
+    int year() default Integer.MIN_VALUE;
 
-    int year() default NO_YEAR;
+    int month() default 0;
 
     /**
      * Defines several {@link Before} annotations on the same element.

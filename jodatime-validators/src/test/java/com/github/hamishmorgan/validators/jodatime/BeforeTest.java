@@ -1,10 +1,10 @@
 package com.github.hamishmorgan.validators.jodatime;
 
-import com.github.hamishmorgan.validators.jodatime.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static com.github.hamishmorgan.validators.jodatime.Annotations.getDefaultValueAsInt;
 import static org.fest.assertions.api.Assertions.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -22,14 +22,26 @@ public class BeforeTest {
     }
 
     @Test
-    public void givenBeforeNoArg_whenYear_thenReturnsZero() throws NoSuchFieldException {
+    public void givenValidBeforeMonth_whenYear_thenReturnsExpected() throws NoSuchFieldException {
+        class TestFixture {
+            @Before(month = 1)
+            Object field;
+        }
+
+        Before before = TestFixture.class.getDeclaredField("field").getAnnotation(Before.class);
+        assertThat(before.month()).isEqualTo(1);
+    }
+
+    @Test
+    public void givenBeforeNoArg_whenYear_thenReturnsZero() throws NoSuchFieldException, NoSuchMethodException {
         class TestFixture {
             @Before
             Object field;
         }
 
         Before before = TestFixture.class.getDeclaredField("field").getAnnotation(Before.class);
-        assertThat(before.year()).isEqualTo(Before.NO_YEAR);
+        assertThat(before.year()).isEqualTo(getDefaultValueAsInt(Before.class, "year"));
+        assertThat(before.month()).isEqualTo(getDefaultValueAsInt(Before.class, "month"));
     }
 
     @Test
@@ -46,5 +58,6 @@ public class BeforeTest {
         assertThat(before.value()[0].year()).isEqualTo(2);
         assertThat(before.value()[1].year()).isEqualTo(1);
     }
+
 
 }

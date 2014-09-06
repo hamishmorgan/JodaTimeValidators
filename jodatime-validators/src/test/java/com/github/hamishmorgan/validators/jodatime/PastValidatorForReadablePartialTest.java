@@ -1,5 +1,6 @@
-package com.github.hamishmorgan.jodatimevalidators;
+package com.github.hamishmorgan.validators.jodatime;
 
+import com.github.hamishmorgan.validators.jodatime.PastValidatorForReadablePartial;
 import com.google.common.base.Supplier;
 import org.joda.time.*;
 import org.junit.Before;

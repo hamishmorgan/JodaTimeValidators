@@ -1,7 +1,7 @@
-package com.github.hamishmorgan.jodatimevalidators;
+package com.github.hamishmorgan.validators.jodatime;
 
 
-import com.github.hamishmorgan.jodatimevalidators.fixtures.CreditCard;
+import com.github.hamishmorgan.validators.jodatime.fixtures.CreditCard;
 import com.google.common.base.Supplier;
 import com.google.common.collect.Iterables;
 import org.joda.time.DateMidnight;

@@ -1,5 +1,7 @@
-package com.github.hamishmorgan.jodatimevalidators;
+package com.github.hamishmorgan.validators.jodatime;
 
+import com.github.hamishmorgan.validators.jodatime.PastValidatorForReadableInstant;
+import com.github.hamishmorgan.validators.jodatime.PastValidatorForReadableInterval;
 import com.google.common.base.Supplier;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;

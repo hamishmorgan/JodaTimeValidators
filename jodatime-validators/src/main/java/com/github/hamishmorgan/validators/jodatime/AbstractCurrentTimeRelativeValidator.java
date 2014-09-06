@@ -1,4 +1,4 @@
-package com.github.hamishmorgan.jodatimevalidators;
+package com.github.hamishmorgan.validators.jodatime;
 
 import com.google.common.base.Supplier;
 import org.joda.time.DateTime;

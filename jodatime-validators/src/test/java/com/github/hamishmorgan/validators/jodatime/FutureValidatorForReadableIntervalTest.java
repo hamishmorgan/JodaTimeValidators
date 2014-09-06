@@ -1,5 +1,7 @@
-package com.github.hamishmorgan.jodatimevalidators;
+package com.github.hamishmorgan.validators.jodatime;
 
+import com.github.hamishmorgan.validators.jodatime.FutureValidatorForReadableInterval;
+import com.github.hamishmorgan.validators.jodatime.PastValidatorForReadableInstant;
 import com.google.common.base.Supplier;
 import org.joda.time.DateTime;
 import org.joda.time.Interval;
@@ -14,7 +16,6 @@ import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.constraints.Future;
-import javax.validation.constraints.Past;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.mockito.Mockito.verifyZeroInteractions;

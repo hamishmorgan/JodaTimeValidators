@@ -1,8 +1,5 @@
-package com.github.hamishmorgan.jodatimevalidators;
+package com.github.hamishmorgan.validators.jodatime;
 
-
-import org.joda.time.DateTime;
-import org.joda.time.ReadableInstant;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
@@ -23,7 +20,7 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 public @interface Before {
 
 
-    String message() default "{com.github.hamishmorgan.jodatimevalidators.Before.message}";
+    String message() default "{com.github.hamishmorgan.validators.jodatime.Before.message}";
 
     Class<?>[] groups() default {};
 

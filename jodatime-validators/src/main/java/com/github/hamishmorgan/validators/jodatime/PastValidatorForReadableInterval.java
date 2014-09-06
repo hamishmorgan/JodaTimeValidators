@@ -1,4 +1,4 @@
-package com.github.hamishmorgan.jodatimevalidators;
+package com.github.hamishmorgan.validators.jodatime;
 
 import org.joda.time.ReadableInterval;
 

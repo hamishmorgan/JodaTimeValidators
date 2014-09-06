@@ -1,5 +1,7 @@
-package com.github.hamishmorgan.jodatimevalidators;
+package com.github.hamishmorgan.validators.jodatime;
 
+import com.github.hamishmorgan.validators.jodatime.Before;
+import com.github.hamishmorgan.validators.jodatime.BeforeValidatorForReadableInstant;
 import org.joda.time.DateTime;
 import org.joda.time.ReadableInstant;
 import org.junit.Test;
@@ -9,8 +11,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.validation.ConstraintValidatorContext;
-import java.lang.annotation.Annotation;
-import java.lang.reflect.Method;
 
 import static org.fest.assertions.api.Assertions.assertThat;
 import static org.fest.assertions.api.Assertions.fail;

@@ -6,37 +6,37 @@
 
     <constraint-definition annotation="javax.validation.constraints.Past">
         <validated-by include-existing-validators="true">
-            <value>com.github.hamishmorgan.jodatimevalidators.PastValidatorForReadableInstant</value>
+            <value>com.github.hamishmorgan.validators.jodatime.PastValidatorForReadableInstant</value>
         </validated-by>
     </constraint-definition>
 
     <constraint-definition annotation="javax.validation.constraints.Past">
         <validated-by include-existing-validators="true">
-            <value>com.github.hamishmorgan.jodatimevalidators.PastValidatorForReadablePartial</value>
+            <value>com.github.hamishmorgan.validators.jodatime.PastValidatorForReadablePartial</value>
         </validated-by>
     </constraint-definition>
 
     <constraint-definition annotation="javax.validation.constraints.Past">
         <validated-by include-existing-validators="true">
-            <value>com.github.hamishmorgan.jodatimevalidators.PastValidatorForReadableInterval</value>
+            <value>com.github.hamishmorgan.validators.jodatime.PastValidatorForReadableInterval</value>
         </validated-by>
     </constraint-definition>
 
     <constraint-definition annotation="javax.validation.constraints.Future">
         <validated-by include-existing-validators="true">
-            <value>com.github.hamishmorgan.jodatimevalidators.FutureValidatorForReadableInstant</value>
+            <value>com.github.hamishmorgan.validators.jodatime.FutureValidatorForReadableInstant</value>
         </validated-by>
     </constraint-definition>
 
     <constraint-definition annotation="javax.validation.constraints.Future">
         <validated-by include-existing-validators="true">
-            <value>com.github.hamishmorgan.jodatimevalidators.FutureValidatorForReadablePartial</value>
+            <value>com.github.hamishmorgan.validators.jodatime.FutureValidatorForReadablePartial</value>
         </validated-by>
     </constraint-definition>
 
     <constraint-definition annotation="javax.validation.constraints.Future">
         <validated-by include-existing-validators="true">
-            <value>com.github.hamishmorgan.jodatimevalidators.FutureValidatorForReadableInterval</value>
+            <value>com.github.hamishmorgan.validators.jodatime.FutureValidatorForReadableInterval</value>
         </validated-by>
     </constraint-definition>
 

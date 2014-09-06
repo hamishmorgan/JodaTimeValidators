@@ -1,4 +1,4 @@
-package com.github.hamishmorgan.jodatimevalidators.fixtures;
+package com.github.hamishmorgan.validators.jodatime.fixtures;
 
 import org.joda.time.ReadableInstant;
 

@@ -1,5 +1,6 @@
-package com.github.hamishmorgan.jodatimevalidators;
+package com.github.hamishmorgan.validators.jodatime;
 
+import com.github.hamishmorgan.validators.jodatime.PastValidatorForReadableInstant;
 import com.google.common.base.Supplier;
 import org.joda.time.DateMidnight;
 import org.joda.time.DateTime;
@@ -13,7 +14,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import javax.validation.ConstraintValidatorContext;
-import javax.validation.constraints.Future;
 import javax.validation.constraints.Past;
 
 import static org.fest.assertions.api.Assertions.assertThat;
@@ -21,16 +21,16 @@ import static org.mockito.Mockito.verifyZeroInteractions;
 import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
-public class FutureValidatorForReadableInstantTest {
+public class PastValidatorForReadableInstantTest {
 
     @Mock
     private Supplier<DateTime> currentDateTimeSupplier;
 
     @InjectMocks
-    private FutureValidatorForReadableInstant validator;
+    private PastValidatorForReadableInstant validator;
 
     @Mock
-    private Future constraintAnnotation;
+    private Past constraintAnnotation;
 
     @Mock
     private ConstraintValidatorContext constraintValidatorContext;
@@ -79,10 +79,10 @@ public class FutureValidatorForReadableInstantTest {
     }
 
     @Test
-    public void givenDateTimeIsInThePast_whenIsValid_thenReturnFalse() {
+    public void givenDateTimeIsInThePast_whenIsValid_thenReturnTrue() {
         DateTime instant = currentDateTimeSupplier.get().minusSeconds(1);
         boolean valid = validator.isValid(instant, constraintValidatorContext);
-        assertThat(valid).isFalse();
+        assertThat(valid).isTrue();
     }
 
     @Test
@@ -93,17 +93,17 @@ public class FutureValidatorForReadableInstantTest {
     }
 
     @Test
-    public void givenDateTimeIsInTheFuture_whenIsValid_thenReturnTrue() {
+    public void givenDateTimeIsInTheFuture_whenIsValid_thenReturnFalse() {
         DateTime instant = currentDateTimeSupplier.get().plusSeconds(1);
         boolean valid = validator.isValid(instant, constraintValidatorContext);
-        assertThat(valid).isTrue();
+        assertThat(valid).isFalse();
     }
 
     @Test
-    public void givenMutableDateTimeIsInThePast_whenIsValid_thenReturnFalse() {
+    public void givenMutableDateTimeIsInThePast_whenIsValid_thenReturnTrue() {
         MutableDateTime instant = currentDateTimeSupplier.get().minusSeconds(1).toMutableDateTime();
         boolean valid = validator.isValid(instant, constraintValidatorContext);
-        assertThat(valid).isFalse();
+        assertThat(valid).isTrue();
     }
 
     @Test
@@ -114,34 +114,35 @@ public class FutureValidatorForReadableInstantTest {
     }
 
     @Test
-    public void givenMutableDateTimeIsInTheFuture_whenIsValid_thenReturnTrue() {
+    public void givenMutableDateTimeIsInTheFuture_whenIsValid_thenReturnFalse() {
+
         MutableDateTime instant = currentDateTimeSupplier.get().plusSeconds(1).toMutableDateTime();
         boolean valid = validator.isValid(instant, constraintValidatorContext);
-        assertThat(valid).isTrue();
+        assertThat(valid).isFalse();
     }
 
     @SuppressWarnings("deprecation")
     @Test
-    public void givenDateMidnightIsInThePast_whenIsValid_thenReturnFalse() {
+    public void givenDateMidnightIsInThePast_whenIsValid_thenReturnTrue() {
         DateMidnight instant = currentDateTimeSupplier.get().toDateMidnight().minusDays(1);
         boolean valid = validator.isValid(instant, constraintValidatorContext);
-        assertThat(valid).isFalse();
+        assertThat(valid).isTrue();
     }
 
     @SuppressWarnings("deprecation")
     @Test
-    public void givenDateMidnightToday_whenIsValid_thenReturnFalse() {
+    public void givenDateMidnightToday_whenIsValid_thenReturnTrue() {
         DateMidnight instant = currentDateTimeSupplier.get().toDateMidnight();
         boolean valid = validator.isValid(instant, constraintValidatorContext);
-        assertThat(valid).isFalse();
+        assertThat(valid).isTrue();
     }
 
     @SuppressWarnings("deprecation")
     @Test
-    public void givenDateMidnightIsInTheFuture_whenIsValid_thenReturnTrue() {
+    public void givenDateMidnightIsInTheFuture_whenIsValid_thenReturnFalse() {
         DateMidnight instant = currentDateTimeSupplier.get().toDateMidnight().plusDays(1);
         boolean valid = validator.isValid(instant, constraintValidatorContext);
-        assertThat(valid).isTrue();
+        assertThat(valid).isFalse();
     }
 
 }

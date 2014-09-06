@@ -45,28 +45,28 @@ public class ContactValidationTest {
     }
 
     @Test
-    public void givenContactWithPastBirthday_whenValidate_thenCausesNoConstraintViolation() {
+    public void givenContactWithPastDateOfBirth_whenValidate_thenCausesNoConstraintViolation() {
         Contact contact = new Contact(new DateMidnight(1960, 11, 3));
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertThat(constraintViolations).isEmpty();
     }
 
     @Test
-    public void givenContactWithNullBirthday_whenValidate_thenCausesNoConstraintViolation() {
+    public void givenContactWithNullDateOfBirth_whenValidate_thenCausesNoConstraintViolation() {
         Contact contact = new Contact(null);
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertThat(constraintViolations).isEmpty();
     }
 
     @Test
-    public void givenContactWithFutureBirthday_whenValidate_thenCausesSingleConstraintViolation() {
+    public void givenContactWithFutureDateOfBirth_whenValidate_thenCausesSingleConstraintViolation() {
         Contact contact = new Contact(new DateMidnight(2020, 11, 3));
         Set<ConstraintViolation<Contact>> constraintViolations = validator.validate(contact);
         assertThat(constraintViolations).hasSize(1);
     }
 
     @Test
-    public void givenContactWithFutureBirthday_whenValidate_thenCausesPastConstraintViolation() {
+    public void givenContactWithFutureDateOfBirth_whenValidate_thenCausesPastConstraintViolation() {
         Contact contact = new Contact(new DateMidnight(2020, 11, 3));
         ConstraintViolation<Contact> constraintViolations = Iterables.getOnlyElement(validator.validate(contact));
         assertThat(constraintViolations.getConstraintDescriptor().getAnnotation()).isInstanceOf(Past.class);

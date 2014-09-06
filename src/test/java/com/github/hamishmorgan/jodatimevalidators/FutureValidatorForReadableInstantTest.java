@@ -72,7 +72,7 @@ public class FutureValidatorForReadableInstantTest {
 
     @SuppressWarnings("ConstantConditions")
     @Test
-    public void givenNullReadableInstant_whenIsValid_thenReturnTrue() {
+    public void givenNullInstant_whenIsValid_thenReturnTrue() {
         ReadableInstant instant = null;
         boolean valid = validator.isValid(instant, constraintValidatorContext);
         assertThat(valid).isTrue();

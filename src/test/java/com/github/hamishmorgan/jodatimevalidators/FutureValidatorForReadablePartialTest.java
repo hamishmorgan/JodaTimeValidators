@@ -63,7 +63,7 @@ public class FutureValidatorForReadablePartialTest {
 
     @SuppressWarnings("ConstantConditions")
     @Test
-    public void givenNullReadablePartial_whenIsValid_thenReturnTrue() {
+    public void givenNullPartial_whenIsValid_thenReturnTrue() {
         ReadablePartial instant = null;
         boolean valid = validator.isValid(instant, constraintValidatorContext);
         assertThat(valid).isTrue();

@@ -72,14 +72,14 @@ public class FutureValidatorForReadableIntervalTest {
 
     @SuppressWarnings("ConstantConditions")
     @Test
-    public void givenNullReadableInstant_whenIsValid_thenReturnTrue() {
+    public void givenNullIntervalt_whenIsValid_thenReturnTrue() {
         ReadableInterval instant = null;
         boolean valid = validator.isValid(instant, constraintValidatorContext);
         assertThat(valid).isTrue();
     }
 
     @Test
-    public void givenStartAndEndAreInThePast_whenIsValid_thenReturnFalse() {
+    public void givenIntervalStartAndEndAreInThePast_whenIsValid_thenReturnFalse() {
         Interval interval = new Interval(
                 currentDateTimeSupplier.get().minusSeconds(2),
                 currentDateTimeSupplier.get().minusSeconds(1));
@@ -88,7 +88,7 @@ public class FutureValidatorForReadableIntervalTest {
     }
 
     @Test
-    public void givenStartIsInThePastAndEndIsNow_whenIsValid_thenReturnFalse() {
+    public void givenIntervalStartIsInThePastAndEndIsNow_whenIsValid_thenReturnFalse() {
         Interval interval = new Interval(
                 currentDateTimeSupplier.get().minusSeconds(1),
                 currentDateTimeSupplier.get());
@@ -97,7 +97,7 @@ public class FutureValidatorForReadableIntervalTest {
     }
 
     @Test
-    public void givenStartIsNowAndEndIsInTheFuture_whenIsValid_thenReturnFalse() {
+    public void givenIntervalStartIsNowAndEndIsInTheFuture_whenIsValid_thenReturnFalse() {
         Interval interval = new Interval(
                 currentDateTimeSupplier.get(),
                 currentDateTimeSupplier.get().plusSeconds(1));
@@ -106,7 +106,7 @@ public class FutureValidatorForReadableIntervalTest {
     }
 
     @Test
-    public void givenStartAndEndIsNow_whenIsValid_thenReturnFalse() {
+    public void givenIntervalStartAndEndIsNow_whenIsValid_thenReturnFalse() {
         Interval interval = new Interval(
                 currentDateTimeSupplier.get(),
                 currentDateTimeSupplier.get());
@@ -115,7 +115,7 @@ public class FutureValidatorForReadableIntervalTest {
     }
 
     @Test
-    public void givenStartInThePastAndEndIsInTheFuture_whenIsValid_thenReturnFalse() {
+    public void givenIntervalStartInThePastAndEndIsInTheFuture_whenIsValid_thenReturnFalse() {
         Interval interval = new Interval(
                 currentDateTimeSupplier.get().minusSeconds(1),
                 currentDateTimeSupplier.get().plusSeconds(1));
@@ -124,7 +124,7 @@ public class FutureValidatorForReadableIntervalTest {
     }
 
     @Test
-    public void givenStartAndEndInTheFuture_whenIsValid_thenReturnTrue() {
+    public void givenIntervalStartAndEndInTheFuture_whenIsValid_thenReturnTrue() {
         Interval interval = new Interval(
                 currentDateTimeSupplier.get().plusSeconds(1),
                 currentDateTimeSupplier.get().plusSeconds(2));

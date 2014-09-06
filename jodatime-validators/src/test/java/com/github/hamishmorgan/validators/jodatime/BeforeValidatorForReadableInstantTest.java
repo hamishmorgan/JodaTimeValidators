@@ -146,7 +146,7 @@ public class BeforeValidatorForReadableInstantTest {
     }
 
     @Test
-    public void givenMonthIsNotBefore_whenIsValid_thenReturnFalse() {
+    public void givenMonthIsAfter_whenIsValid_thenReturnFalse() {
         when(constraintAnnotation.month()).thenReturn(4);
         validator.initialize(constraintAnnotation);
         DateTime instant = new DateTime(2005, 5, 1, 1, 0, 0);
@@ -205,5 +205,67 @@ public class BeforeValidatorForReadableInstantTest {
         boolean valid = validator.isValid(instant, constraintValidatorContext);
         assertThat(valid).isFalse();
     }
+
+
+    @Test(expected = IllegalFieldValueException.class)
+    public void givenDayGreaterThan31_whenInitialize_thenThrowIllegalFieldValueException() {
+        when(constraintAnnotation.day()).thenReturn(32);
+        validator.initialize(constraintAnnotation);
+    }
+
+    @Test(expected = IllegalFieldValueException.class)
+    public void givenDayLessThanZero_whenInitialize_thenThrowIllegalFieldValueException() {
+        when(constraintAnnotation.day()).thenReturn(-1);
+        validator.initialize(constraintAnnotation);
+    }
+
+    @Test
+    public void givenDayIsBefore_whenIsValid_thenReturnTrue() {
+        when(constraintAnnotation.day()).thenReturn(16);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 23, 59, 59);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isTrue();
+    }
+
+    @Test
+    public void givenDayIsEqual_whenIsValid_thenReturnFalse() {
+        when(constraintAnnotation.day()).thenReturn(15);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 1, 0, 0);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isFalse();
+    }
+
+    @Test
+    public void givenDayIsAfter_whenIsValid_thenReturnFalse() {
+        when(constraintAnnotation.day()).thenReturn(14);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 1, 0, 0);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isFalse();
+    }
+
+
+    @Test
+    public void givenMonthIsBefore_andDayIsAfter_whenIsValid_thenReturnTrue() {
+        when(constraintAnnotation.month()).thenReturn(6);
+        when(constraintAnnotation.day()).thenReturn(14);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 23, 59, 59);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isTrue();
+    }
+
+    @Test
+    public void givenMonthIsAfter_andDayIsBefore_whenIsValid_thenReturnFalse() {
+        when(constraintAnnotation.month()).thenReturn(4);
+        when(constraintAnnotation.day()).thenReturn(16);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 23, 59, 59);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isFalse();
+    }
+
 
 }

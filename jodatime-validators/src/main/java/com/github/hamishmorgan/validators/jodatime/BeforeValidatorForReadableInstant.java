@@ -28,6 +28,9 @@ public class BeforeValidatorForReadableInstant implements ConstraintValidator<Be
             if (constraintAnnotation.month() != getDefaultValueAsInt(Before.class, "month")) {
                 partial = partial.with(DateTimeFieldType.monthOfYear(), constraintAnnotation.month());
             }
+            if (constraintAnnotation.day() != getDefaultValueAsInt(Before.class, "day")) {
+                partial = partial.with(DateTimeFieldType.dayOfMonth(), constraintAnnotation.day());
+            }
         } catch (NoSuchMethodException e) {
             throw new AssertionError(e);
         }

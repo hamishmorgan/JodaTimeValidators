@@ -30,6 +30,8 @@ public @interface Before {
 
     int month() default 0;
 
+    int day() default 0;
+
     /**
      * Defines several {@link Before} annotations on the same element.
      *

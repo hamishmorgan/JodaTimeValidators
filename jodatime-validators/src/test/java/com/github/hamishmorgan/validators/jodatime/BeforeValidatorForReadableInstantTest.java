@@ -246,7 +246,6 @@ public class BeforeValidatorForReadableInstantTest {
         assertThat(valid).isFalse();
     }
 
-
     @Test
     public void givenMonthIsBefore_andDayIsAfter_whenIsValid_thenReturnTrue() {
         when(constraintAnnotation.month()).thenReturn(6);
@@ -267,5 +266,160 @@ public class BeforeValidatorForReadableInstantTest {
         assertThat(valid).isFalse();
     }
 
+    @Test(expected = IllegalFieldValueException.class)
+    public void givenHourGreaterThan23_whenInitialize_thenThrowIllegalFieldValueException() {
+        when(constraintAnnotation.hour()).thenReturn(24);
+        validator.initialize(constraintAnnotation);
+    }
+
+    @Test(expected = IllegalFieldValueException.class)
+    public void givenHourLessThanZero_whenInitialize_thenThrowIllegalFieldValueException() {
+        when(constraintAnnotation.hour()).thenReturn(-1);
+        validator.initialize(constraintAnnotation);
+    }
+
+    @Test
+    public void givenHourIsBefore_whenIsValid_thenReturnTrue() {
+        when(constraintAnnotation.hour()).thenReturn(13);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 12, 59, 59);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isTrue();
+    }
+
+    @Test
+    public void givenHourIsEqual_whenIsValid_thenReturnFalse() {
+        when(constraintAnnotation.hour()).thenReturn(12);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 12, 0, 0);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isFalse();
+    }
+
+    @Test
+    public void givenHourIsAfter_whenIsValid_thenReturnFalse() {
+        when(constraintAnnotation.hour()).thenReturn(11);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 12, 0, 0);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isFalse();
+    }
+
+    @Test(expected = IllegalFieldValueException.class)
+    public void givenMinuteGreaterThan59_whenInitialize_thenThrowIllegalFieldValueException() {
+        when(constraintAnnotation.minute()).thenReturn(60);
+        validator.initialize(constraintAnnotation);
+    }
+
+    @Test(expected = IllegalFieldValueException.class)
+    public void givenMinuteLessThanZero_whenInitialize_thenThrowIllegalFieldValueException() {
+        when(constraintAnnotation.minute()).thenReturn(-1);
+        validator.initialize(constraintAnnotation);
+    }
+
+    @Test
+    public void givenMinuteIsBefore_whenIsValid_thenReturnTrue() {
+        when(constraintAnnotation.minute()).thenReturn(31);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 12, 30, 59);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isTrue();
+    }
+
+    @Test
+    public void givenMinuteIsEqual_whenIsValid_thenReturnFalse() {
+        when(constraintAnnotation.minute()).thenReturn(30);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 12, 30, 0);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isFalse();
+    }
+
+    @Test
+    public void givenMinuteIsAfter_whenIsValid_thenReturnFalse() {
+        when(constraintAnnotation.minute()).thenReturn(29);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 12, 30, 0);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isFalse();
+    }
+
+    @Test(expected = IllegalFieldValueException.class)
+    public void givenSecondGreaterThan59_whenInitialize_thenThrowIllegalFieldValueException() {
+        when(constraintAnnotation.second()).thenReturn(60);
+        validator.initialize(constraintAnnotation);
+    }
+
+    @Test(expected = IllegalFieldValueException.class)
+    public void givenSecondLessThanZero_whenInitialize_thenThrowIllegalFieldValueException() {
+        when(constraintAnnotation.second()).thenReturn(-1);
+        validator.initialize(constraintAnnotation);
+    }
+
+    @Test
+    public void givenSecondIsBefore_whenIsValid_thenReturnTrue() {
+        when(constraintAnnotation.second()).thenReturn(31);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 12, 30, 30);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isTrue();
+    }
+
+    @Test
+    public void givenSecondIsEqual_whenIsValid_thenReturnFalse() {
+        when(constraintAnnotation.second()).thenReturn(30);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 12, 30, 30);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isFalse();
+    }
+
+    @Test
+    public void givenSecondIsAfter_whenIsValid_thenReturnFalse() {
+        when(constraintAnnotation.second()).thenReturn(29);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 12, 30, 30);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isFalse();
+    }
+
+    @Test(expected = IllegalFieldValueException.class)
+    public void givenMillisGreaterThan999_whenInitialize_thenThrowIllegalFieldValueException() {
+        when(constraintAnnotation.millis()).thenReturn(1000);
+        validator.initialize(constraintAnnotation);
+    }
+
+    @Test(expected = IllegalFieldValueException.class)
+    public void givenMillisLessThanZero_whenInitialize_thenThrowIllegalFieldValueException() {
+        when(constraintAnnotation.millis()).thenReturn(-1);
+        validator.initialize(constraintAnnotation);
+    }
+
+    @Test
+    public void givenMillisIsBefore_whenIsValid_thenReturnTrue() {
+        when(constraintAnnotation.millis()).thenReturn(501);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 12, 30, 30, 500);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isTrue();
+    }
+
+    @Test
+    public void givenMillisIsEqual_whenIsValid_thenReturnFalse() {
+        when(constraintAnnotation.millis()).thenReturn(500);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 12, 30, 30, 500);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isFalse();
+    }
+
+    @Test
+    public void givenMillisIsAfter_whenIsValid_thenReturnFalse() {
+        when(constraintAnnotation.millis()).thenReturn(499);
+        validator.initialize(constraintAnnotation);
+        DateTime instant = new DateTime(2005, 5, 15, 12, 30, 30, 500);
+        boolean valid = validator.isValid(instant, constraintValidatorContext);
+        assertThat(valid).isFalse();
+    }
 
 }

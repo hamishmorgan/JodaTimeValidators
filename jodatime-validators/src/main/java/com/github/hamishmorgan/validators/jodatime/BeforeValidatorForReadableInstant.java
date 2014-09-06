@@ -31,6 +31,18 @@ public class BeforeValidatorForReadableInstant implements ConstraintValidator<Be
             if (constraintAnnotation.day() != getDefaultValueAsInt(Before.class, "day")) {
                 partial = partial.with(DateTimeFieldType.dayOfMonth(), constraintAnnotation.day());
             }
+            if (constraintAnnotation.hour() != getDefaultValueAsInt(Before.class, "hour")) {
+                partial = partial.with(DateTimeFieldType.hourOfDay(), constraintAnnotation.hour());
+            }
+            if (constraintAnnotation.minute() != getDefaultValueAsInt(Before.class, "minute")) {
+                partial = partial.with(DateTimeFieldType.minuteOfHour(), constraintAnnotation.minute());
+            }
+            if (constraintAnnotation.second() != getDefaultValueAsInt(Before.class, "second")) {
+                partial = partial.with(DateTimeFieldType.secondOfMinute(), constraintAnnotation.second());
+            }
+            if (constraintAnnotation.millis() != getDefaultValueAsInt(Before.class, "millis")) {
+                partial = partial.with(DateTimeFieldType.millisOfSecond(), constraintAnnotation.millis());
+            }
         } catch (NoSuchMethodException e) {
             throw new AssertionError(e);
         }

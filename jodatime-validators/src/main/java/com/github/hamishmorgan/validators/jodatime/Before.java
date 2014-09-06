@@ -19,7 +19,6 @@ import static java.lang.annotation.RetentionPolicy.RUNTIME;
 @Constraint(validatedBy = {})
 public @interface Before {
 
-
     String message() default "{com.github.hamishmorgan.validators.jodatime.Before.message}";
 
     Class<?>[] groups() default {};
@@ -31,6 +30,14 @@ public @interface Before {
     int month() default 0;
 
     int day() default 0;
+
+    int hour() default 0;
+
+    int minute() default 0;
+
+    int second() default 0;
+
+    int millis() default 0;
 
     /**
      * Defines several {@link Before} annotations on the same element.

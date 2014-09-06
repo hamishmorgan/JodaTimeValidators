@@ -1,15 +1,15 @@
 package com.github.hamishmorgan.jodatimevalidators.fixtures;
 
-import javax.validation.constraints.Past;
+import org.joda.time.ReadableInstant;
 
-import org.joda.time.DateMidnight;
+import javax.validation.constraints.Past;
 
 public class Contact {
 
     @Past
-    private final DateMidnight dateOfBirth;
+    private final ReadableInstant dateOfBirth;
 
-    public Contact(DateMidnight dateOfBirth) {
+    public Contact(ReadableInstant dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
